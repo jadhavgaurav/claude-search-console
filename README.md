@@ -1,6 +1,13 @@
 # search-console
 
-Read-only Google Search Console and GA4 tools for Claude Code: `list_sites`, `search_analytics`, `inspect_url`, `list_sitemaps`, `ga4_list_properties`, `ga4_run_report`.
+Read-only Google Search Console and GA4 tools for Claude Code: `list_sites`, `search_analytics`, `compare_periods`, `portfolio_summary`, `inspect_url`, `list_sitemaps`, `ga4_list_properties`, `ga4_metadata`, `ga4_run_report`.
+
+Skills (they tell Claude which tools to call): `quick-wins`, `cannibalization`, `brand-split`, `weekly-report`. Ask for them by name, for example "run the weekly-report skill".
+
+- `search_analytics` pages automatically, up to 100,000 rows per call.
+- `compare_periods` compares a date range with the same-length range before it, per query, page, country or device.
+- `portfolio_summary` shows every property for the last N days against the N before.
+- `ga4_run_report` supports a comparison period, filters and ordering. `ga4_metadata` lists valid metric and dimension names.
 
 ## Setup
 

@@ -1,6 +1,6 @@
 {
   "name": "search-console",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Read-only Google Search Console and GA4 tools for Claude: sites, search analytics, URL inspection, sitemaps, GA4 properties and reports.",
   "keywords": ["google-search-console", "seo", "mcp"]
 }

@@ -11,4 +11,4 @@ description: Split Search Console performance into branded and non-branded queri
 4. Sum clicks and impressions per segment and period. Average position is impression-weighted.
 5. Report a table: segment, clicks, share of clicks, impressions, position, change versus the previous period.
 6. Interpret it: growth in non-branded clicks is the real SEO signal. Rising branded clicks usually mean awareness or ads, not rankings.
-7. Note the limit: Google hides rare anonymized queries, so the two segments add up to slightly less than the site total.
+7. Note the limit: Google hides anonymized queries, and on some sites that is close to half of all clicks. Compare the two segments with the site total (a call with `dimensions: ["date"]` and no filter), report the hidden share, and do not call the segments the full picture.

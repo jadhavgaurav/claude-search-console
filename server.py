@@ -355,7 +355,7 @@ def ga4_run_report(
       Use ga4_metadata to find valid names.
     dimensions: API names such as date, pagePath, sessionDefaultChannelGroup, country, deviceCategory.
     compare_start_date, compare_end_date: optional second period. Rows then carry a dateRange field
-      (date_range_0 is the main period, date_range_1 the comparison).
+      (date_range_0 is the main period, date_range_1 the comparison). A period with no data has no rows.
     filters: list of {"dimension", "value", "match"}, all must match. match defaults to EXACT; also
       BEGINS_WITH, ENDS_WITH, CONTAINS, FULL_REGEXP, PARTIAL_REGEXP.
       Example: {"dimension": "pagePath", "value": "/blog/", "match": "BEGINS_WITH"}.

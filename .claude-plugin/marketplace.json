@@ -1,0 +1,11 @@
+{
+  "name": "gsc-tools",
+  "owner": { "name": "Digibranders" },
+  "plugins": [
+    {
+      "name": "search-console",
+      "source": "./",
+      "description": "Read-only Google Search Console tools: sites, search analytics, URL inspection, sitemaps."
+    }
+  ]
+}

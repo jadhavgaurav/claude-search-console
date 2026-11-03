@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "search-console": {
+      "command": "uv",
+      "args": ["run", "--script", "${CLAUDE_PLUGIN_ROOT}/server.py"],
+      "env": {
+        "GSC_CREDENTIALS_FILE": "${GSC_CREDENTIALS_FILE:-}"
+      }
+    }
+  }
+}

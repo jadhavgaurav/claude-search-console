@@ -1,0 +1,6 @@
+{
+  "name": "search-console",
+  "version": "0.1.0",
+  "description": "Read-only Google Search Console tools for Claude: sites, search analytics, URL inspection and sitemaps.",
+  "keywords": ["google-search-console", "seo", "mcp"]
+}

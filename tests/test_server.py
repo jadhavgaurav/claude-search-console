@@ -47,3 +47,33 @@ def test_filters_become_and_group():
 def test_invalid_input_raises(overrides):
     with pytest.raises(ValueError):
         body(**overrides)
+
+
+from server import build_report_request  # noqa: E402
+
+
+def test_report_request_normalizes_property_and_builds_body():
+    path, req = build_report_request(
+        "properties/123", "28daysAgo", "yesterday", ["pagePath"], ["sessions"], 50
+    )
+    assert path == "properties/123"
+    assert req == {
+        "dateRanges": [{"startDate": "28daysAgo", "endDate": "yesterday"}],
+        "dimensions": [{"name": "pagePath"}],
+        "metrics": [{"name": "sessions"}],
+        "limit": 50,
+    }
+
+
+@pytest.mark.parametrize(
+    "args",
+    [
+        ("abc", "today", "today", [], ["sessions"], 10),
+        ("1", "last week", "today", [], ["sessions"], 10),
+        ("1", "today", "today", [], [], 10),
+        ("1", "today", "today", [], ["sessions"], 0),
+    ],
+)
+def test_report_request_rejects_bad_input(args):
+    with pytest.raises(ValueError):
+        build_report_request(*args)

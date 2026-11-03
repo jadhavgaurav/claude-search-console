@@ -5,7 +5,7 @@
     {
       "name": "search-console",
       "source": "./",
-      "description": "Read-only Google Search Console tools: sites, search analytics, URL inspection, sitemaps."
+      "description": "Read-only Google Search Console and GA4 tools: search analytics, URL inspection, sitemaps, GA4 reports."
     }
   ]
 }

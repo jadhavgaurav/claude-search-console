@@ -77,3 +77,13 @@ def test_report_request_normalizes_property_and_builds_body():
 def test_report_request_rejects_bad_input(args):
     with pytest.raises(ValueError):
         build_report_request(*args)
+
+
+from server import DEFAULT_KEY, credentials_path  # noqa: E402
+
+
+def test_credentials_path_uses_env_then_default(monkeypatch):
+    monkeypatch.setenv("GSC_CREDENTIALS_FILE", "")
+    assert credentials_path() == DEFAULT_KEY
+    monkeypatch.setenv("GSC_CREDENTIALS_FILE", "/tmp/k.json")
+    assert credentials_path() == Path("/tmp/k.json")

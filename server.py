@@ -8,6 +8,7 @@ import os
 import re
 from datetime import date
 from functools import lru_cache
+from pathlib import Path
 from typing import Any
 
 from google.oauth2 import service_account
@@ -22,19 +23,27 @@ MAX_ROWS = 25000
 MAX_REPORT_ROWS = 250000
 # GA4 accepts YYYY-MM-DD plus these relative forms.
 GA_DATE = re.compile(r"^(\d{4}-\d{2}-\d{2}|today|yesterday|\d+daysAgo)$")
+# Desktop apps do not inherit shell profile variables, so a default path keeps the plugin working there.
+DEFAULT_KEY = Path.home() / ".config" / "gsc" / "service-account.json"
 DIMENSIONS = {"query", "page", "country", "device", "date", "searchAppearance"}
 
 mcp = FastMCP("search-console")
 
 
+def credentials_path() -> Path:
+    """Key file from GSC_CREDENTIALS_FILE when set and non-empty, else DEFAULT_KEY."""
+    return Path(os.environ.get("GSC_CREDENTIALS_FILE") or DEFAULT_KEY).expanduser()
+
+
 @lru_cache(maxsize=None)
 def _service(api: str, version: str) -> Any:
-    path = os.environ.get("GSC_CREDENTIALS_FILE")
-    if not path:
+    path = credentials_path()
+    if not path.is_file():
         raise RuntimeError(
-            "GSC_CREDENTIALS_FILE is not set. Point it at a service account JSON key file."
+            f"Service account key not found at {path}. "
+            "Save the JSON key there or set GSC_CREDENTIALS_FILE."
         )
-    creds = service_account.Credentials.from_service_account_file(path, scopes=SCOPES)
+    creds = service_account.Credentials.from_service_account_file(str(path), scopes=SCOPES)
     return build(api, version, credentials=creds, cache_discovery=False)
 
 

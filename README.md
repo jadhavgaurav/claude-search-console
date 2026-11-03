@@ -8,12 +8,7 @@ Read-only Google Search Console and GA4 tools for Claude Code: `list_sites`, `se
 2. Create a **service account** and download a JSON key.
 3. In Search Console, open Settings > Users and permissions and add the service account email (`...@<project>.iam.gserviceaccount.com`) to each property with **Restricted** access (read only).
 4. In GA4, open Admin > Property access management and add the same service account email with the **Viewer** role.
-5. Export the key path in your shell profile:
-
-   ```bash
-   export GSC_CREDENTIALS_FILE="$HOME/.config/gsc/service-account.json"
-   ```
-
+5. Save the key as `~/.config/gsc/service-account.json`. That path is the default. To use another path, set `GSC_CREDENTIALS_FILE` (desktop apps do not read your shell profile, so prefer the default).
 6. Requires `uv`. Install from the marketplace repo on any device:
 
    ```bash

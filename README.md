@@ -13,10 +13,10 @@ Read-only Google Search Console tools for Claude Code: `list_sites`, `search_ana
    export GSC_CREDENTIALS_FILE="$HOME/.config/gsc/service-account.json"
    ```
 
-5. Requires `uv`. Install from the marketplace repo on any device (replace `<owner>/<repo>`):
+5. Requires `uv`. Install from the marketplace repo on any device:
 
    ```bash
-   claude plugin marketplace add <owner>/<repo>
+   claude plugin marketplace add jadhavgaurav/claude-search-console
    claude plugin install search-console@gsc-tools
    ```
 
